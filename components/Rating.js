@@ -10,6 +10,16 @@ export default class Rating extends React.Component {
     };
   }
 
+// implement a componentWillReceiveProps() which will compare the nextProps.rating
+// (passed into the method) to this.props.rating and calls this.setState with the correct values.
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      increasing: this.props.rating < nextProps.rating,
+      decreasing: this.props.rating > nextProps.rating
+    })
+  }
+
   render() {
     let trend = 'stable';
     if (this.state.increasing) {
